@@ -16,8 +16,18 @@ public class SignupController {
 
     @RequestMapping("*")
     public String defaultMapping() {
-        return "redirect:/form";
+        return "redirect:/login";
     }
+    
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loadLogin(){
+        return "login"; 
+    }
+    /**
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public String submitLogin(@RequestParam String user, @RequestParam String password){
+        
+    }**/
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public String loadForm() {
