@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Discussion page</title>
+    </head>
+
+    <body>
+        <h2>Post in the discussion page</h2>
+
+        <form th:action="@{/forum}" method="GET">
+            <input type="text" name="content"/>
+            <input type="submit" value="Click!"/>
+        </form>
+        <h1>Discussions</h1>
+        <ul>
+            <li th:each="item: ${list}" th:utext="${item}">Text here</li>
+        </ul>
+        <div align="center">
+            <form hidden="hidden" th:action="@{/database}" method="POST">
+                <p><label for="user">User</label>:<input type="text" name="user"/></p>
+                <p><label for="password">Password</label>:<input type="password" name="password"/></p>
+                <p><input type="submit" value="Click!"/></p>
+            </form>
+        </div>
+    </body>
+</html>
