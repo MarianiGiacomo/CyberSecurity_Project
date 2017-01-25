@@ -37,17 +37,19 @@ public class DatabaseController {
         }
     }
 
-    @RequestMapping(value = "/database/query", method = RequestMethod.POST)
-    public String DatabaseLogin(Model model, @RequestParam String query) throws SQLException {
+    @RequestMapping(value = "/database/person", method = RequestMethod.POST)
+    public String DatabaseLogin(Model model) throws SQLException {
         this.datalist = new ArrayList<>();
         connection = DriverManager.getConnection("jdbc:h2:file:./database", "user", "");
-        resultSet = connection.createStatement().executeQuery(query);
-        int column = 1;
+        resultSet = connection.createStatement().executeQuery("SELECT * FROM person;");
         while (resultSet.next()) {
-            String text = resultSet.getString(column);
-            datalist.add(text);
-            column ++;
+            String email = " Email: " + resultSet.getString(1) + " / ";
+            datalist.add(email);
+            String password = " Password: " + resultSet.getString(2);
+            datalist.add(password);
+            datalist.add("</br>");
         }
+        System.out.println(datalist.get(0) + " " + datalist.get(1));
         model.addAttribute("datalist", datalist);
         return "database";
     }
