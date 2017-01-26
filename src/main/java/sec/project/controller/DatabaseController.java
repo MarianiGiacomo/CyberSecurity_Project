@@ -28,13 +28,9 @@ public class DatabaseController {
     private Connection connection;
     private ResultSet resultSet;
 
-    @RequestMapping(value = "/database", method = RequestMethod.POST)
-    public String DatabaseLogin(@RequestParam String user, @RequestParam String password) {
-        if (user.equals("admin") && password.equals("abc123")) {
-            return "database";
-        } else {
-            return "/forum";
-        }
+    @RequestMapping(value = "/database", method = RequestMethod.GET)
+    public String DatabaseLogin() {
+        return "database";
     }
 
     @RequestMapping(value = "/database/person", method = RequestMethod.POST)
