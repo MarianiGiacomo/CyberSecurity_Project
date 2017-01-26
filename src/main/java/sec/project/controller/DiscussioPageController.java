@@ -8,7 +8,6 @@ package sec.project.controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -28,9 +27,10 @@ public class DiscussioPageController {
     private Connection connection;
     private ResultSet resultSet;
 
-    @RequestMapping(value = "/forum", method = RequestMethod.GET)
+    @RequestMapping(value = "/login/forum", method = RequestMethod.GET)
     public String getDiscussions(Model model, @RequestParam(required = false) String content) {
         this.list = new ArrayList<>();
+
         try {
             connection = DriverManager.getConnection("jdbc:h2:file:./database", "user", "");
             String query = "SELECT text FROM forum;";
@@ -42,7 +42,7 @@ public class DiscussioPageController {
         } catch (Throwable t) {
             t.printStackTrace();
         }
-        
+
         if (content != null && !content.trim().isEmpty()) {
             this.list.add(content.trim());
             String add = "INSERT INTO forum (text) VALUES ('" + content + "');";
