@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CyberSecurityBaseProjectApplication {
-
+    
     public static void main(String[] args) throws Throwable {
         SpringApplication.run(CyberSecurityBaseProjectApplication.class);
         
@@ -28,8 +28,6 @@ public class CyberSecurityBaseProjectApplication {
         while (resultSet.next()) {
             String email = resultSet.getString("email");
             String password = resultSet.getString("password");
-
-            System.out.println(email + "\t" + password);
         }
     }
 }

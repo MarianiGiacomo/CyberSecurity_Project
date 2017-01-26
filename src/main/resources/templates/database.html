@@ -10,12 +10,9 @@ and open the template in the editor.
     </head>
     <body>
         <div>Database</div>
-        <form th:action="@{/database/query}" method="POST">
-            <input type="text" name="query"/>
-            <input type="submit" value="Click!"/>
+        <form th:action="@{/database/person}" method="POST">
+            <input type="submit" value="Get users"/>
         </form>
-        <ul>
-            <li th:each="item: ${datalist}" th:text="${item}">Text here</li>
-        </ul>
+        <span th:each="item: ${datalist}" th:utext="${item}"></span>
     </body>
 </html>
